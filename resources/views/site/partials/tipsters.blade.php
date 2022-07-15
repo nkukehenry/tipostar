@@ -12,12 +12,14 @@
             <div class="col-md-2 col-sm-4 col-xs-6">
                 <div class="tipster">
 
+                
+
                     @foreach($tipster->badges as $badge)
-                       @include('widgets.badge',$badge)
+                        @include('widgets.badge',['badge'=>$badge])
                     @endforeach
 
                     <div class="img-circle" style="background-image: url({{ asset($tipster->photo) }})">
-                    @if($tipster->is_sponsored)
+                    @if($tipster->is_sponsored) 
                      <div class="tipster-badge">Trusted</div>
                     @endif
                     </div>

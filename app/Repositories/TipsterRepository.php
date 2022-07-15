@@ -29,7 +29,9 @@ class TipsterRepository{
    */
   public function  getTipster($tipster_id)
   {
-    $tipster = $this->formaTipster(Tipster::find($tipster_id));
+    $tipster = Tipster::find($tipster_id);
+    $tipster = $this->formaTipster($tipster);
+    
     return $tipster;
   }
 
@@ -46,11 +48,9 @@ class TipsterRepository{
             $tipster->photo       = storage_link("avatars/".$tipster->user->photo);
 
             $tipster->badges->map(function($tip_badge){
-
               $tip_badge->badge_class = $tip_badge->badge->badge_class;
               $tip_badge->badge_color = $tip_badge->badge->badge_color;
               $tip_badge->svg_image   = $tip_badge->badge->svg_image;
-
             });
 
        
